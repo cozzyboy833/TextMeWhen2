@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Reminder System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .status.success {
+            background-color: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .status.error {
+            background-color: #fed7d7;
+            color: #822727;
+            border: 1px solid #fc8181;
+        }
+        
+        .examples {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .examples h3 {
+            margin-top: 0;
+            color: #4a5568;
+        }
+        
+        .example-item {
+            background: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 AI Reminder System</h1>
+        
+        <div class="examples">
+            <h3>Example Reminders:</h3>
+            <div class="example-item">"Text me when the Jets game is over"</div>
+            <div class="example-item">"Remind me when Apple stock hits $200"</div>
+            <div class="example-item">"Let me know when it stops raining in New York"</div>
+            <div class="example-item">"Notify me when the new iPhone is announced"</div>
+        </div>
+        
+        <form id="reminderForm">
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number (optional, for future SMS):</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1234567890">
+            </div>
+            
+            <div class="form-group">
+                <label for="reminder">What would you like to be reminded about?</label>
+                <textarea id="reminder" name="reminder" required placeholder="Describe what you want to be notified about..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Set Reminder</button>
+        </form>
+        
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        document.getElementById('reminderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const statusDiv = document.getElementById('status');
+            const submitBtn = document.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.textContent = 'Setting Reminder...';
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(this);
+            const data = {
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                reminder: formData.get('reminder')
+            };
+            
+            try {
+                const response = await fetch('process_reminder.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    statusDiv.className = 'status success';
+                    statusDiv.textContent = result.message;
+                    statusDiv.style.display = 'block';
+                    this.reset();
+                } else {
+                    throw new Error(result.message || 'Unknown error occurred');
+                }
+                
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = 'Error: ' + error.message;
+                statusDiv.style.display = 'block';
+            } finally {
+                submitBtn.textContent = 'Set Reminder';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

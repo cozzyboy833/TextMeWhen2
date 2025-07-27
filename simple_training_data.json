@@ -1,0 +1,50 @@
+[
+    {
+        "input": "Message me when the yankees game starts tomorrow on 7\/25",
+        "event_type": "sports_game",
+        "has_target_time": false,
+        "status": "completed"
+    },
+    {
+        "input": "message me when it is 10:05 am in NJ tomorrow",
+        "event_type": "time_absolute",
+        "has_target_time": true,
+        "status": "active"
+    },
+    {
+        "input": "Message me at the time when the yankees game starts tomorrow, 7\/25",
+        "event_type": "sports_game",
+        "has_target_time": false,
+        "status": "completed"
+    },
+    {
+        "input": "Message me  when the stock market opens and say \"make that money you dirty dirty boy\"",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "completed"
+    },
+    {
+        "input": "Text me when it hits 83 degrees tomorrow",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "completed"
+    },
+    {
+        "input": "message me in 2 minutes",
+        "event_type": "time_relative",
+        "has_target_time": true,
+        "status": "completed"
+    },
+    {
+        "input": "Please god oh mighty work",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "completed"
+    },
+    {
+        "input": "is this working",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "completed"
+    }
+]
