@@ -1,0 +1,19 @@
+reminder_id,original_text,email,status,created_at,completed_at,current_checks,max_checks,event_type,entity,condition,value,target_time,keywords,was_notified,notification_sent_at,parsing_confidence,time_accuracy
+15,"text me when the next Nintendo Switch game comes out",jobrien5833@gmail.com,active,"2025-07-27 20:46:23",,0,2880,generic,unknown,event_occurs,,,text;me;when;the;next;nintendo;switch;game;comes;out,no,,0.5,
+14,"text me when Minecraft releases a new update",jobrien5833@gmail.com,active,"2025-07-27 20:46:06",,0,2880,generic,unknown,event_occurs,,,text;me;when;minecraft;releases;a;new;update,no,,0.5,
+13,"text me when a heat wave is coming",jobrien5833@gmail.com,active,"2025-07-27 20:45:49",,0,2880,generic,unknown,event_occurs,,,text;me;when;a;heat;wave;is;coming,no,,0.5,
+12,"text me when the sun sets
+",jobrien5833@gmail.com,active,"2025-07-27 20:45:23",,0,2880,generic,unknown,event_occurs,,,"text;me;when;the;sun;sets
+",no,,0.5,
+11,"text me when it is july 30th ",jobrien5833@gmail.com,active,"2025-07-27 20:44:45",,0,2880,generic,unknown,event_occurs,,,text;me;when;it;is;july;30th;,no,,0.5,
+10,"text me when aaron judge comes back from the injured reserve list",jobrien5833@gmail.com,active,"2025-07-27 20:44:33",,0,2880,generic,unknown,event_occurs,,,text;me;when;aaron;judge;comes;back;from;the;injured;reserve;list,no,,0.5,
+9,"text me when it is 4:43pm
+",jobrien5833@gmail.com,active,"2025-07-27 20:42:14",,0,2880,time_absolute,clock,time_reached,,"2025-07-28 04:43:00",time;clock;4:43,no,,0.95,
+8,"Message me when the yankees game starts tomorrow on 7/25",9088683979@vtext.com,completed,"2025-07-25 03:24:20","2025-07-25 03:26:01",1,2880,sports_game,Yankees,game_over,,,"yankees game;final score;game over",yes,"2025-07-25 03:26:01",0.8,
+7,"message me when it is 10:05 am in NJ tomorrow",9088683979@vtext.com,active,"2025-07-25 03:23:12",,1,2880,time_absolute,clock,time_reached,,"2025-07-25 10:05:00",time;clock;10:5,no,,0.95,
+6,"Message me at the time when the yankees game starts tomorrow, 7/25",9088683979@vtext.com,completed,"2025-07-25 03:22:32","2025-07-25 03:25:56",1,2880,sports_game,Yankees,game_over,,,"yankees game;final score;game over",yes,"2025-07-25 03:25:56",0.8,
+5,"Message me  when the stock market opens and say ""make that money you dirty dirty boy""",9088683979@vtext.com,completed,"2025-07-25 03:21:47","2025-07-25 03:25:52",1,2880,generic,unknown,event_occurs,,,"message;me;;when;the;stock;market;opens;and;say;""make;that;money;you;dirty;dirty;boy""",yes,"2025-07-25 03:25:52",0.5,
+4,"Text me when it hits 83 degrees tomorrow",9088683979@vtext.com,completed,"2025-07-25 03:20:13","2025-07-25 03:25:46",1,2880,generic,unknown,event_occurs,,,text;me;when;it;hits;83;degrees;tomorrow,yes,"2025-07-25 03:25:46",0.5,
+3,"message me in 2 minutes",9088683979@vtext.com,completed,"2025-07-25 03:16:26","2025-07-25 03:18:32",1,2880,time_relative,timer,time_reached,2,"2025-07-25 05:18:26","timer;relative time;2 minutes",yes,"2025-07-25 03:18:32",0.95,0
+2,"Please god oh mighty work",9088683979@vtext.com,completed,"2025-07-25 03:07:05","2025-07-25 03:08:02",1,2880,generic,unknown,event_occurs,,,please;god;oh;mighty;work,yes,"2025-07-25 03:08:02",0.5,
+1,"is this working",cozzyboy13@gmail.com,completed,"2025-07-25 02:43:08","2025-07-25 03:04:39",2,2880,generic,unknown,event_occurs,,,is;this;working,yes,"2025-07-25 03:04:39",0.5,

@@ -1,0 +1,102 @@
+[
+    {
+        "text": "text me when the next Nintendo Switch game comes out",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    },
+    {
+        "text": "text me when Minecraft releases a new update",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    },
+    {
+        "text": "text me when a heat wave is coming",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    },
+    {
+        "text": "text me when the sun sets\n",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    },
+    {
+        "text": "text me when it is july 30th ",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    },
+    {
+        "text": "text me when aaron judge comes back from the injured reserve list",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    },
+    {
+        "text": "text me when it is 4:43pm\n",
+        "entities": [],
+        "parsed_entity": "clock",
+        "parsed_value": null
+    },
+    {
+        "text": "Message me when the yankees game starts tomorrow on 7\/25",
+        "entities": [
+            {
+                "entity": "Yankees",
+                "type": "sports_team"
+            }
+        ],
+        "parsed_entity": "Yankees",
+        "parsed_value": null
+    },
+    {
+        "text": "message me when it is 10:05 am in NJ tomorrow",
+        "entities": [],
+        "parsed_entity": "clock",
+        "parsed_value": null
+    },
+    {
+        "text": "Message me at the time when the yankees game starts tomorrow, 7\/25",
+        "entities": [
+            {
+                "entity": "Yankees",
+                "type": "sports_team"
+            }
+        ],
+        "parsed_entity": "Yankees",
+        "parsed_value": null
+    },
+    {
+        "text": "Message me  when the stock market opens and say \"make that money you dirty dirty boy\"",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    },
+    {
+        "text": "Text me when it hits 83 degrees tomorrow",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    },
+    {
+        "text": "message me in 2 minutes",
+        "entities": [],
+        "parsed_entity": "timer",
+        "parsed_value": 2
+    },
+    {
+        "text": "Please god oh mighty work",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    },
+    {
+        "text": "is this working",
+        "entities": [],
+        "parsed_entity": "unknown",
+        "parsed_value": null
+    }
+]

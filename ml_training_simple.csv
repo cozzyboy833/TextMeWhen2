@@ -1,0 +1,18 @@
+input_text,event_type,has_time,success
+"text me when the next Nintendo Switch game comes out",generic,no,failed
+"text me when Minecraft releases a new update",generic,no,failed
+"text me when a heat wave is coming",generic,no,failed
+"text me when the sun sets
+",generic,no,failed
+"text me when it is july 30th ",generic,no,failed
+"text me when aaron judge comes back from the injured reserve list",generic,no,failed
+"text me when it is 4:43pm
+",time_absolute,yes,failed
+"Message me when the yankees game starts tomorrow on 7/25",sports_game,no,successful
+"message me when it is 10:05 am in NJ tomorrow",time_absolute,yes,failed
+"Message me at the time when the yankees game starts tomorrow, 7/25",sports_game,no,successful
+"Message me  when the stock market opens and say ""make that money you dirty dirty boy""",generic,no,successful
+"Text me when it hits 83 degrees tomorrow",generic,no,successful
+"message me in 2 minutes",time_relative,yes,successful
+"Please god oh mighty work",generic,no,successful
+"is this working",generic,no,successful

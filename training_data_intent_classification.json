@@ -1,0 +1,77 @@
+[
+    {
+        "text": "text me when the next Nintendo Switch game comes out",
+        "intent": "generic",
+        "confidence": 1
+    },
+    {
+        "text": "text me when Minecraft releases a new update",
+        "intent": "generic",
+        "confidence": 1
+    },
+    {
+        "text": "text me when a heat wave is coming",
+        "intent": "generic",
+        "confidence": 1
+    },
+    {
+        "text": "text me when the sun sets\n",
+        "intent": "generic",
+        "confidence": 1
+    },
+    {
+        "text": "text me when it is july 30th ",
+        "intent": "generic",
+        "confidence": 1
+    },
+    {
+        "text": "text me when aaron judge comes back from the injured reserve list",
+        "intent": "generic",
+        "confidence": 1
+    },
+    {
+        "text": "text me when it is 4:43pm\n",
+        "intent": "time_absolute",
+        "confidence": 1
+    },
+    {
+        "text": "Message me when the yankees game starts tomorrow on 7\/25",
+        "intent": "sports_game",
+        "confidence": 1
+    },
+    {
+        "text": "message me when it is 10:05 am in NJ tomorrow",
+        "intent": "time_absolute",
+        "confidence": 1
+    },
+    {
+        "text": "Message me at the time when the yankees game starts tomorrow, 7\/25",
+        "intent": "sports_game",
+        "confidence": 1
+    },
+    {
+        "text": "Message me  when the stock market opens and say \"make that money you dirty dirty boy\"",
+        "intent": "generic",
+        "confidence": 1
+    },
+    {
+        "text": "Text me when it hits 83 degrees tomorrow",
+        "intent": "generic",
+        "confidence": 1
+    },
+    {
+        "text": "message me in 2 minutes",
+        "intent": "time_relative",
+        "confidence": 1
+    },
+    {
+        "text": "Please god oh mighty work",
+        "intent": "generic",
+        "confidence": 1
+    },
+    {
+        "text": "is this working",
+        "intent": "generic",
+        "confidence": 1
+    }
+]

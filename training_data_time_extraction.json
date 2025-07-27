@@ -1,0 +1,137 @@
+[
+    {
+        "text": "text me when the next Nintendo Switch game comes out",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "text me when Minecraft releases a new update",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "text me when a heat wave is coming",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "text me when the sun sets\n",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "text me when it is july 30th ",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "text me when aaron judge comes back from the injured reserve list",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "text me when it is 4:43pm\n",
+        "has_relative_time": false,
+        "has_absolute_time": true,
+        "time_value": "4:43",
+        "time_unit": null,
+        "target_time": "2025-07-28 04:43:00",
+        "parsed_correctly": true
+    },
+    {
+        "text": "Message me when the yankees game starts tomorrow on 7\/25",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "message me when it is 10:05 am in NJ tomorrow",
+        "has_relative_time": false,
+        "has_absolute_time": true,
+        "time_value": "10:05",
+        "time_unit": null,
+        "target_time": "2025-07-25 10:05:00",
+        "parsed_correctly": true
+    },
+    {
+        "text": "Message me at the time when the yankees game starts tomorrow, 7\/25",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "Message me  when the stock market opens and say \"make that money you dirty dirty boy\"",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "Text me when it hits 83 degrees tomorrow",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "message me in 2 minutes",
+        "has_relative_time": true,
+        "has_absolute_time": false,
+        "time_value": 2,
+        "time_unit": "minutes",
+        "target_time": "2025-07-25 05:18:26",
+        "parsed_correctly": true
+    },
+    {
+        "text": "Please god oh mighty work",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    },
+    {
+        "text": "is this working",
+        "has_relative_time": false,
+        "has_absolute_time": false,
+        "time_value": null,
+        "time_unit": null,
+        "target_time": null,
+        "parsed_correctly": false
+    }
+]

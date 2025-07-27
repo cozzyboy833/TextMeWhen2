@@ -1,0 +1,62 @@
+[
+    {
+        "inputs": "text me when the next Nintendo Switch game comes out",
+        "targets": "generic"
+    },
+    {
+        "inputs": "text me when Minecraft releases a new update",
+        "targets": "generic"
+    },
+    {
+        "inputs": "text me when a heat wave is coming",
+        "targets": "generic"
+    },
+    {
+        "inputs": "text me when the sun sets\n",
+        "targets": "generic"
+    },
+    {
+        "inputs": "text me when it is july 30th ",
+        "targets": "generic"
+    },
+    {
+        "inputs": "text me when aaron judge comes back from the injured reserve list",
+        "targets": "generic"
+    },
+    {
+        "inputs": "text me when it is 4:43pm\n",
+        "targets": "time_absolute"
+    },
+    {
+        "inputs": "Message me when the yankees game starts tomorrow on 7\/25",
+        "targets": "sports_game"
+    },
+    {
+        "inputs": "message me when it is 10:05 am in NJ tomorrow",
+        "targets": "time_absolute"
+    },
+    {
+        "inputs": "Message me at the time when the yankees game starts tomorrow, 7\/25",
+        "targets": "sports_game"
+    },
+    {
+        "inputs": "Message me  when the stock market opens and say \"make that money you dirty dirty boy\"",
+        "targets": "generic"
+    },
+    {
+        "inputs": "Text me when it hits 83 degrees tomorrow",
+        "targets": "generic"
+    },
+    {
+        "inputs": "message me in 2 minutes",
+        "targets": "time_relative"
+    },
+    {
+        "inputs": "Please god oh mighty work",
+        "targets": "generic"
+    },
+    {
+        "inputs": "is this working",
+        "targets": "generic"
+    }
+]

@@ -1,0 +1,9 @@
+input_text,event_type,has_target_time,status
+"Message me when the yankees game starts tomorrow on 7/25",sports_game,no,completed
+"message me when it is 10:05 am in NJ tomorrow",time_absolute,yes,active
+"Message me at the time when the yankees game starts tomorrow, 7/25",sports_game,no,completed
+"Message me  when the stock market opens and say ""make that money you dirty dirty boy""",generic,no,completed
+"Text me when it hits 83 degrees tomorrow",generic,no,completed
+"message me in 2 minutes",time_relative,yes,completed
+"Please god oh mighty work",generic,no,completed
+"is this working",generic,no,completed

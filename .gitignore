@@ -1,0 +1,15 @@
+# Logs
+*.log
+server.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Windows files
+Thumbs.db
+ehthumbs.db
+
+# Mac files (for your friend)
+.DS_Store
+**/.DS_Store

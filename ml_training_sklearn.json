@@ -1,0 +1,62 @@
+[
+    {
+        "text": "text me when the next Nintendo Switch game comes out",
+        "label": "generic"
+    },
+    {
+        "text": "text me when Minecraft releases a new update",
+        "label": "generic"
+    },
+    {
+        "text": "text me when a heat wave is coming",
+        "label": "generic"
+    },
+    {
+        "text": "text me when the sun sets\n",
+        "label": "generic"
+    },
+    {
+        "text": "text me when it is july 30th ",
+        "label": "generic"
+    },
+    {
+        "text": "text me when aaron judge comes back from the injured reserve list",
+        "label": "generic"
+    },
+    {
+        "text": "text me when it is 4:43pm\n",
+        "label": "time_absolute"
+    },
+    {
+        "text": "Message me when the yankees game starts tomorrow on 7\/25",
+        "label": "sports_game"
+    },
+    {
+        "text": "message me when it is 10:05 am in NJ tomorrow",
+        "label": "time_absolute"
+    },
+    {
+        "text": "Message me at the time when the yankees game starts tomorrow, 7\/25",
+        "label": "sports_game"
+    },
+    {
+        "text": "Message me  when the stock market opens and say \"make that money you dirty dirty boy\"",
+        "label": "generic"
+    },
+    {
+        "text": "Text me when it hits 83 degrees tomorrow",
+        "label": "generic"
+    },
+    {
+        "text": "message me in 2 minutes",
+        "label": "time_relative"
+    },
+    {
+        "text": "Please god oh mighty work",
+        "label": "generic"
+    },
+    {
+        "text": "is this working",
+        "label": "generic"
+    }
+]

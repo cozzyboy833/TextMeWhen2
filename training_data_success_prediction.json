@@ -1,0 +1,167 @@
+[
+    {
+        "text": "text me when the next Nintendo Switch game comes out",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 0,
+        "max_checks": 2880,
+        "status": "active",
+        "was_completed": false,
+        "was_notified": false,
+        "success_score": 0
+    },
+    {
+        "text": "text me when Minecraft releases a new update",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 0,
+        "max_checks": 2880,
+        "status": "active",
+        "was_completed": false,
+        "was_notified": false,
+        "success_score": 0
+    },
+    {
+        "text": "text me when a heat wave is coming",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 0,
+        "max_checks": 2880,
+        "status": "active",
+        "was_completed": false,
+        "was_notified": false,
+        "success_score": 0
+    },
+    {
+        "text": "text me when the sun sets\n",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 0,
+        "max_checks": 2880,
+        "status": "active",
+        "was_completed": false,
+        "was_notified": false,
+        "success_score": 0
+    },
+    {
+        "text": "text me when it is july 30th ",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 0,
+        "max_checks": 2880,
+        "status": "active",
+        "was_completed": false,
+        "was_notified": false,
+        "success_score": 0
+    },
+    {
+        "text": "text me when aaron judge comes back from the injured reserve list",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 0,
+        "max_checks": 2880,
+        "status": "active",
+        "was_completed": false,
+        "was_notified": false,
+        "success_score": 0
+    },
+    {
+        "text": "text me when it is 4:43pm\n",
+        "event_type": "time_absolute",
+        "has_target_time": true,
+        "check_count": 0,
+        "max_checks": 2880,
+        "status": "active",
+        "was_completed": false,
+        "was_notified": false,
+        "success_score": 0
+    },
+    {
+        "text": "Message me when the yankees game starts tomorrow on 7\/25",
+        "event_type": "sports_game",
+        "has_target_time": false,
+        "check_count": 1,
+        "max_checks": 2880,
+        "status": "completed",
+        "was_completed": true,
+        "was_notified": true,
+        "success_score": 1
+    },
+    {
+        "text": "message me when it is 10:05 am in NJ tomorrow",
+        "event_type": "time_absolute",
+        "has_target_time": true,
+        "check_count": 1,
+        "max_checks": 2880,
+        "status": "active",
+        "was_completed": false,
+        "was_notified": false,
+        "success_score": 0
+    },
+    {
+        "text": "Message me at the time when the yankees game starts tomorrow, 7\/25",
+        "event_type": "sports_game",
+        "has_target_time": false,
+        "check_count": 1,
+        "max_checks": 2880,
+        "status": "completed",
+        "was_completed": true,
+        "was_notified": true,
+        "success_score": 1
+    },
+    {
+        "text": "Message me  when the stock market opens and say \"make that money you dirty dirty boy\"",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 1,
+        "max_checks": 2880,
+        "status": "completed",
+        "was_completed": true,
+        "was_notified": true,
+        "success_score": 1
+    },
+    {
+        "text": "Text me when it hits 83 degrees tomorrow",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 1,
+        "max_checks": 2880,
+        "status": "completed",
+        "was_completed": true,
+        "was_notified": true,
+        "success_score": 1
+    },
+    {
+        "text": "message me in 2 minutes",
+        "event_type": "time_relative",
+        "has_target_time": true,
+        "check_count": 1,
+        "max_checks": 2880,
+        "status": "completed",
+        "was_completed": true,
+        "was_notified": true,
+        "success_score": 1
+    },
+    {
+        "text": "Please god oh mighty work",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 1,
+        "max_checks": 2880,
+        "status": "completed",
+        "was_completed": true,
+        "was_notified": true,
+        "success_score": 1
+    },
+    {
+        "text": "is this working",
+        "event_type": "generic",
+        "has_target_time": false,
+        "check_count": 2,
+        "max_checks": 2880,
+        "status": "completed",
+        "was_completed": true,
+        "was_notified": true,
+        "success_score": 1
+    }
+]
