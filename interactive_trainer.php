@@ -34,7 +34,7 @@ class InteractiveAITrainer {
         
         while (true) {
             $this->showMenu();
-            $choice = $this->getInput("Choose an option (1-6): ");
+            $choice = $this->getInput("Choose an option (1-7): ");
             
             switch ($choice) {
                 case '1':
@@ -53,6 +53,9 @@ class InteractiveAITrainer {
                     $this->generateImprovedModel();
                     break;
                 case '6':
+                    $this->showCustomTypes();
+                    break;
+                case '7':
                     echo "Goodbye! 👋\n";
                     exit;
                 default:
@@ -69,7 +72,8 @@ class InteractiveAITrainer {
         echo "3. 🧪 Test new example with current AI\n";
         echo "4. 📋 View all corrections made so far\n";
         echo "5. 🚀 Generate improved AI model\n";
-        echo "6. 🚪 Exit\n\n";
+        echo "6. 🆕 View your custom types\n";
+        echo "7. 🚪 Exit\n\n";
     }
     
     private function reviewFailedReminders() {
@@ -86,6 +90,11 @@ class InteractiveAITrainer {
             LIMIT 10
         ");
         $reminders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (empty($reminders)) {
+            echo "No completed reminders found to review.\n";
+            return;
+        }
         
         foreach ($reminders as $i => $reminder) {
             $parsed = json_decode($reminder['parsed_data'], true);
@@ -122,6 +131,9 @@ class InteractiveAITrainer {
         echo "Original: \"" . $reminder['original_text'] . "\"\n";
         echo "Wrong AI classification: " . ($wrongParsed['event_type'] ?? 'unknown') . "\n\n";
         
+        // Get existing custom types
+        $customTypes = $this->getCustomTypes();
+        
         echo "What SHOULD this be classified as?\n";
         echo "1. sports_game_start (game beginning)\n";
         echo "2. sports_game_end (game ending)\n";
@@ -132,7 +144,21 @@ class InteractiveAITrainer {
         echo "7. product_announcement\n";
         echo "8. generic\n";
         
-        $typeChoice = $this->getInput("Choose correct type (1-8): ");
+        // Show custom types if any exist
+        $nextOption = 9;
+        $customTypeMap = [];
+        if (!empty($customTypes)) {
+            echo "\n🆕 Your Custom Types:\n";
+            foreach ($customTypes as $customType) {
+                echo "$nextOption. " . $customType['type_name'] . " (" . $customType['description'] . ")\n";
+                $customTypeMap[$nextOption] = $customType['type_name'];
+                $nextOption++;
+            }
+        }
+        
+        echo "$nextOption. 🆕 CREATE NEW TYPE\n";
+        
+        $typeChoice = $this->getInput("Choose correct type (1-$nextOption): ");
         
         $typeMap = [
             '1' => 'sports_game_start',
@@ -145,7 +171,38 @@ class InteractiveAITrainer {
             '8' => 'generic'
         ];
         
-        $correctType = $typeMap[$typeChoice] ?? 'generic';
+        $correctType = '';
+        
+        if ($typeChoice == $nextOption) {
+            // Create new custom type
+            echo "\n🆕 CREATING NEW CLASSIFICATION TYPE\n";
+            echo "===================================\n";
+            
+            $correctType = $this->getInput("Enter new type name (e.g., 'news_alert', 'crypto_price'): ");
+            
+            // Validate the new type name
+            $correctType = strtolower(str_replace(' ', '_', trim($correctType)));
+            
+            if (empty($correctType)) {
+                echo "❌ Invalid type name. Using 'generic' instead.\n";
+                $correctType = 'generic';
+            } else {
+                echo "✅ Created new type: '$correctType'\n";
+                
+                // Ask for description to remember what this type is for
+                $typeDescription = $this->getInput("Brief description of this type (optional): ");
+                
+                // Save the new type definition
+                $this->saveNewTypeDefinition($correctType, $typeDescription, $reminder['original_text']);
+            }
+        } elseif (isset($customTypeMap[$typeChoice])) {
+            // Use existing custom type
+            $correctType = $customTypeMap[$typeChoice];
+        } else {
+            // Use standard type
+            $correctType = $typeMap[$typeChoice] ?? 'generic';
+        }
+        
         $correctEntity = $this->getInput("What's the main entity? (e.g., 'Yankees', 'timer', 'AAPL'): ");
         $correctCondition = $this->getInput("What's the condition? (e.g., 'game_over', 'price_above'): ");
         $notes = $this->getInput("Any notes about why this was wrong? ");
@@ -176,12 +233,80 @@ class InteractiveAITrainer {
         ];
     }
     
+    private function getCustomTypes() {
+        try {
+            $stmt = $this->pdo->query("SELECT * FROM custom_types ORDER BY created_at DESC");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return [];
+        }
+    }
+    
+    private function saveNewTypeDefinition($typeName, $description, $exampleText) {
+        // Create table for custom types if it doesn't exist
+        $this->pdo->exec("
+            CREATE TABLE IF NOT EXISTS custom_types (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                type_name TEXT UNIQUE,
+                description TEXT,
+                example_text TEXT,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            )
+        ");
+        
+        // Save the new type
+        $stmt = $this->pdo->prepare("
+            INSERT OR REPLACE INTO custom_types (type_name, description, example_text) 
+            VALUES (?, ?, ?)
+        ");
+        
+        $stmt->execute([$typeName, $description, $exampleText]);
+        
+        echo "💾 Saved new type definition: '$typeName'\n";
+        if ($description) {
+            echo "   Description: $description\n";
+        }
+        echo "   Example: \"$exampleText\"\n";
+    }
+    
+    private function showCustomTypes() {
+        echo "\n📋 YOUR CUSTOM TYPES:\n";
+        echo "====================\n";
+        
+        try {
+            $stmt = $this->pdo->query("SELECT * FROM custom_types ORDER BY created_at DESC");
+            $customTypes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            if (empty($customTypes)) {
+                echo "No custom types created yet.\n";
+                echo "💡 You can create custom types when correcting reminders (option 1).\n";
+                return;
+            }
+            
+            foreach ($customTypes as $type) {
+                echo "🏷️  " . $type['type_name'] . "\n";
+                if ($type['description']) {
+                    echo "   Description: " . $type['description'] . "\n";
+                }
+                echo "   Example: \"" . $type['example_text'] . "\"\n";
+                echo "   Created: " . $type['created_at'] . "\n\n";
+            }
+            
+            echo "Total custom types: " . count($customTypes) . "\n";
+        } catch (Exception $e) {
+            echo "No custom types table found yet.\n";
+        }
+    }
+    
     private function addManualCorrection() {
         echo "\n➕ ADD MANUAL CORRECTION\n";
         echo "=======================\n";
         echo "Teach the AI a new pattern by example.\n\n";
         
         $text = $this->getInput("Enter example text: ");
+        
+        // Get existing custom types
+        $customTypes = $this->getCustomTypes();
         
         echo "How should \"$text\" be classified?\n";
         echo "1. sports_game_start\n";
@@ -193,7 +318,19 @@ class InteractiveAITrainer {
         echo "7. product_announcement\n";
         echo "8. generic\n";
         
-        $typeChoice = $this->getInput("Choose type (1-8): ");
+        // Show custom types if any exist
+        $nextOption = 9;
+        $customTypeMap = [];
+        if (!empty($customTypes)) {
+            echo "\n🆕 Your Custom Types:\n";
+            foreach ($customTypes as $customType) {
+                echo "$nextOption. " . $customType['type_name'] . " (" . $customType['description'] . ")\n";
+                $customTypeMap[$nextOption] = $customType['type_name'];
+                $nextOption++;
+            }
+        }
+        
+        $typeChoice = $this->getInput("Choose type (1-" . ($nextOption-1) . "): ");
         
         $typeMap = [
             '1' => 'sports_game_start',
@@ -206,7 +343,7 @@ class InteractiveAITrainer {
             '8' => 'generic'
         ];
         
-        $correctType = $typeMap[$typeChoice] ?? 'generic';
+        $correctType = $customTypeMap[$typeChoice] ?? $typeMap[$typeChoice] ?? 'generic';
         $correctEntity = $this->getInput("Entity: ");
         $correctCondition = $this->getInput("Condition: ");
         $notes = $this->getInput("Teaching notes: ");
@@ -237,9 +374,9 @@ class InteractiveAITrainer {
         $text = $this->getInput("Enter text to test: ");
         
         // Load current parser if it exists
-        if (file_exists('improved_ai_parser.php')) {
-            require_once 'improved_ai_parser.php';
-            $parser = new ImprovedAIParser();
+        if (file_exists('enhanced_ai_parser.php')) {
+            require_once 'enhanced_ai_parser.php';
+            $parser = new EnhancedAIParser();
             $result = $parser->parseReminder($text);
             
             echo "\n🤖 AI PREDICTION:\n";
@@ -255,11 +392,11 @@ class InteractiveAITrainer {
             
             if (strtolower($correct) === 'n') {
                 echo "Let's correct this...\n";
-                // Add correction logic here
+                // Could add correction logic here
             }
             
         } else {
-            echo "❌ No trained model found. Run training first.\n";
+            echo "❌ No trained model found. Run training first (option 5).\n";
         }
     }
     
@@ -317,7 +454,7 @@ class InteractiveAITrainer {
             $type = $correction['correct_classification'];
             $entity = $correction['correct_entity'];
             
-            // Special handling for your Yankees game issue
+            // Special handling for sports games
             if ($type === 'sports_game_end') {
                 if (preg_match('/\b(yankees|jets|giants|knicks|mets)\b/', $text, $matches)) {
                     $gameEndPatterns[] = [
@@ -389,7 +526,6 @@ class EnhancedAIParser {
         ];
         
         // ENHANCED SPORTS GAME DETECTION
-        // Check for game END patterns first (your Yankees issue!)
         foreach (\$this->gameEndPatterns as \$pattern) {
             if (stripos(\$text, \$pattern['team']) !== false) {
                 foreach (\$pattern['keywords'] as \$keyword) {
@@ -398,14 +534,13 @@ class EnhancedAIParser {
                         \$result['entity'] = \$pattern['entity'];
                         \$result['condition'] = 'game_over';
                         \$result['confidence'] = \$pattern['confidence'];
-                        \$result['reasoning'] = \"Found team '{$pattern['team']}' with end keyword '{\$keyword}'\";
+                        \$result['reasoning'] = \"Found team '{\$pattern['team']}' with end keyword '{\$keyword}'\";
                         return \$result;
                     }
                 }
             }
         }
         
-        // Check for game START patterns
         foreach (\$this->gameStartPatterns as \$pattern) {
             if (stripos(\$text, \$pattern['team']) !== false) {
                 foreach (\$pattern['keywords'] as \$keyword) {
@@ -414,14 +549,14 @@ class EnhancedAIParser {
                         \$result['entity'] = \$pattern['entity'];
                         \$result['condition'] = 'game_starts';
                         \$result['confidence'] = \$pattern['confidence'];
-                        \$result['reasoning'] = \"Found team '{$pattern['team']}' with start keyword '{\$keyword}'\";
+                        \$result['reasoning'] = \"Found team '{\$pattern['team']}' with start keyword '{\$keyword}'\";
                         return \$result;
                     }
                 }
             }
         }
         
-        // TIME PARSING (highest priority for non-sports)
+        // TIME PARSING
         if (preg_match('/\bin (\d+) (minute|minutes|hour|hours?)\b/i', \$text, \$matches)) {
             \$amount = intval(\$matches[1]);
             \$unit = strtolower(\$matches[2]);
@@ -462,7 +597,6 @@ class EnhancedAIParser {
                 }
             }
             
-            // If enough words match, use this pattern
             if (\$matchCount >= min(3, count(\$patternWords) / 2)) {
                 \$result['event_type'] = \$pattern['type'];
                 \$result['entity'] = \$pattern['entity'];
@@ -479,44 +613,6 @@ class EnhancedAIParser {
 ?>";
         
         file_put_contents('enhanced_ai_parser.php', $parserCode);
-        
-        // Also create a test script
-        $testCode = "<?php
-// test_enhanced_parser.php
-
-require_once 'enhanced_ai_parser.php';
-
-\$parser = new EnhancedAIParser();
-
-\$testCases = [
-    'message me when the yankees game ends',
-    'notify me when the yankees game starts',
-    'text me when the jets game is over',
-    'remind me in 5 minutes',
-    'let me know when it is 3:30 PM'
-];
-
-echo \"🧪 Testing Enhanced AI Parser\\n\";
-echo \"============================\\n\\n\";
-
-foreach (\$testCases as \$i => \$test) {
-    echo \"Test \" . (\$i + 1) . \": \\\"\$test\\\"\\n\";
-    \$result = \$parser->parseReminder(\$test);
-    
-    echo \"  Type: \" . \$result['event_type'] . \"\\n\";
-    echo \"  Entity: \" . \$result['entity'] . \"\\n\";
-    echo \"  Confidence: \" . round(\$result['confidence'] * 100, 1) . \"%\\n\";
-    echo \"  Reasoning: \" . \$result['reasoning'] . \"\\n\";
-    
-    if (isset(\$result['target_time']) && \$result['target_time']) {
-        echo \"  Target: \" . \$result['target_time'] . \"\\n\";
-    }
-    
-    echo \"\\n\";
-}
-?>";
-        
-        file_put_contents('test_enhanced_parser.php', $testCode);
     }
     
     private function getInput($prompt) {

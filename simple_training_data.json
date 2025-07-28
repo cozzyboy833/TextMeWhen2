@@ -1,5 +1,47 @@
 [
     {
+        "input": "text me when the next Nintendo Switch game comes out",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "active"
+    },
+    {
+        "input": "text me when Minecraft releases a new update",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "active"
+    },
+    {
+        "input": "text me when a heat wave is coming",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "active"
+    },
+    {
+        "input": "text me when the sun sets\n",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "active"
+    },
+    {
+        "input": "text me when it is july 30th ",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "active"
+    },
+    {
+        "input": "text me when aaron judge comes back from the injured reserve list",
+        "event_type": "generic",
+        "has_target_time": false,
+        "status": "active"
+    },
+    {
+        "input": "text me when it is 4:43pm\n",
+        "event_type": "time_absolute",
+        "has_target_time": true,
+        "status": "active"
+    },
+    {
         "input": "Message me when the yankees game starts tomorrow on 7\/25",
         "event_type": "sports_game",
         "has_target_time": false,
